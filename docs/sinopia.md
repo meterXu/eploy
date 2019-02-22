@@ -19,6 +19,14 @@ sinopia
 uplinks:
   npmjs:
     url: http://registry.npm.taobao.org/
+packages:
+  '@*/*':
+    # scoped packages
+    access: $all
+    publish: $authenticated
+    # 添加代理配置
+    proxy: npmjs
+
 #配置端口，并外网可访问
 listen: 0.0.0.0:4873  
 
