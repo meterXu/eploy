@@ -2,7 +2,7 @@
 
 （ps 有一些问题，推荐使用sinopia
 
-centos7+  具体查看 [centos.md](docs/centos.md)
+centos7+  具体查看 [centos.md](centos.md)
 
 ### install node
 

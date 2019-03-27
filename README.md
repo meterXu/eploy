@@ -9,4 +9,5 @@ step by step install deployments
 
 1. cnpm私服  [sinopia](docs/sinopia.md)
 2. mysql安装
+3. [fastdfs in centos](docs/fastdfs/fastdfs.md)
 
