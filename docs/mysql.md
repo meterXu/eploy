@@ -1,3 +1,27 @@
+
+
+
+
+##  docker 安装
+
+```bash
+# docker 中下载 mysql
+docker pull mysql
+
+#启动
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=xxxxxxxxx -d mysql
+
+#进入容器
+docker exec -it mysql bash
+
+#登录mysql
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';
+
+```
+
+
+
 ## 创建用户，授权
 
 创建
