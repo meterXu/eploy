@@ -61,3 +61,13 @@ npm config delete https-proxy
 
 ```
 
+## 特殊处理
+
+找到sinopia全局安装包中的 up-storage.js 文件, **不是config.yaml所在目录,是在全局安装包的目录下**,修改up-storage.js中的encode为
+
+```js
+var encode = function(url){
+        return encodeURIComponent(url).replace(/^%40/,"@")
+}
+```
+
