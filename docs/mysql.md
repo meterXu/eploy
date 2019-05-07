@@ -20,6 +20,16 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';
 
 ```
 
+## yum安装
+
+```bash
+wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+rpm -qpl mysql57-community-release-el7-7.noarch.rpm
+yum list Mysql* 
+yum install mysql-community-server
+mysql -V
+```
+
 
 
 ## 创建用户，授权

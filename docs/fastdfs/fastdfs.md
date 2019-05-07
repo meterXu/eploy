@@ -14,21 +14,23 @@ PS：
 1. 两台服务器需要相互连接，client可以内网访问2台服务器
 2. 两台服务器及web站点之间均需要至少**千兆**以上带宽
 
+## 安装问题列表
 
+[qa](./fastdfs_qa.md)
 
 ## 下载组件包
 
 安装包：  
 
-FastDFS_v5.08.tar.gz  
+[FastDFS_v5.08.tar.gz](https://sourceforge.net/p/fastdfs/activity/)  
 
-fastdfs-nginx-module_v1.19.zip  
+[fastdfs-nginx-module_v1.19.zip](https://github.com/happyfish100/fastdfs-nginx-module/tree/V1.20) 
 
-nginx-1.10.3.tar.gz  
+[nginx-1.10.3.tar.gz](http://nginx.org/download/nginx-1.10.3.tar.gz)  
 
-keepalived-1.2.22.tar.gz  官网<http://www.keepalived.org/ >  
+[keepalived-1.2.22.tar.gz](https://www.keepalived.org/software/keepalived-1.2.22.tar.gz)  官网<http://www.keepalived.org/ >  
 
-libfastcommon.zip  
+[libfastcommon.zip](https://github.com/happyfish100/libfastcommon/tree/V1.0.39)  
 
 下载到 /temp
 
@@ -40,6 +42,10 @@ libfastcommon.zip
 
 略
 
+```bash
+yum install -y ntp
+```
+
 ntpdate time.nist.gov 
 
 ## 基础环境
@@ -47,17 +53,31 @@ ntpdate time.nist.gov
 #### 防火墙
 
 ```bash
+# centos 6
 iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 22122 -j ACCEPT
 iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 23000 -j ACCEPT
 iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8088 -j ACCEPT
 /etc/init.d/iptables save
 
+# centos 7
+firewall-cmd --zone=public --add-port=22122/tcp --permanent
+firewall-cmd --zone=public --add-port=23000/tcp --permanent
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --zone=public --add-port=8088/tcp --permanent
+firewall-cmd --reload
 ```
 
+### selinux
 
+```bash
+getenforce
 
+vim /etc/selinux/config
 
+setenforce 0
+
+```
 
 ## 安装fastdfs
 
@@ -65,17 +85,16 @@ iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8088 -j ACCEPT
 
 ```bash
 yum install -y vim glibc-devel gcc libevent-devel make unzip git
-yum intall -y libc
+yum install -y libc
 
 #libfastcommon安装
 git clone https://github.com/happyfish100/libfastcommon
 cd libfastcommon
 chmod +x make.sh
 ./make.sh 
-# maybe need ./make.sh install
+./make.sh install
 
 #fastdfs
-cd /temp/
 tar zxvf FastDFS_v5.08.tar.gz
 cd FastDFS
 ./make.sh
@@ -94,6 +113,7 @@ ll /etc/fdfs
 
 ```bash
 mkdir -p /fdfs/tracker
+cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf
 vim /etc/fdfs/tracker.conf
 ```
 
@@ -116,6 +136,7 @@ netstat -unltp | grep fdfs
 # 日志
 tail -f /fdfs/tracker/logs/trackerd.log
 
+chmod +x /etc/rc.d/rc.local
 # 开机启动
 vim /etc/rc.d/rc.local
 # /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart
@@ -129,6 +150,7 @@ vim /etc/rc.d/rc.local
 
 ```bash
 mkdir -p /fdfs/storage
+cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf
 vim /etc/fdfs/storage.conf
 ```
 
@@ -158,6 +180,7 @@ tail -f /fdfs/storage/logs/storaged.log
 ##运行fdfs_monitor查看storage服务器是否已经登记到tracker服务器
 /usr/bin/fdfs_monitor /etc/fdfs/storage.conf
 
+chmod +x /etc/rc.d/rc.local
 #开机自动启动
 vim /etc/rc.d/rc.local
 # 	/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
@@ -253,6 +276,7 @@ netstat -unltp | grep nginx
 tail -f /usr/local/nginx/logs/error.log
 
 #开机自启动
+chmod +x /etc/rc.d/rc.local
 vim /etc/rc.d/rc.local
 #添加进文件：/usr/local/nginx/sbin/nginx
 ```
@@ -271,10 +295,18 @@ http://192.168.0.x:8080
 
 ```bash
 cp /temp/nginx-1.10.3.tar.gz /usr/local/src
+
 cp /temp/fastdfs-nginx-module_v1.19.zip /usr/local/src
 cd /usr/local/src
 tar zxvf nginx-1.10.3.tar.gz
+
+
 unzip fastdfs-nginx-module_v1.15.tar.gz
+# or github 方式下载
+git clone https://github.com/happyfish100/fastdfs-nginx-module.git
+cd fastdfs-nginx-module
+git checkout V1.20
+cd ..
 
 yum install -y pcre pcre-devel zlib zlib-devel gd-devel
 
