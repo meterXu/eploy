@@ -13,4 +13,5 @@ step by step install deployments
 4. [matomo on centos7](./docs/matomo.md)
 5. [mysql](./docs/mysql.md)
 6. [redis](./docs/redis.md)
+7. [mongodb](./docs/mongodb.md)
 

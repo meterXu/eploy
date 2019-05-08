@@ -37,11 +37,18 @@ mysql -V
 创建
 
 ```bash
+#获取初始化密码
+grep 'password' /var/log/mysqld.log |head -n 1
+
+#修改密码
+set password for root@localhost = password('123')；
+
 mysql -u root -p
 #密码
 
+
 #插入用户
-xx> CREATE USER 'test'@'%' IDENTIFIED BY 'password';
+xx> CREATE USER 'test'@'%' IDENTIFIED BY 'password'；
 xx> exit
 
 #test
