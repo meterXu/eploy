@@ -14,4 +14,5 @@ step by step install deployments
 5. [mysql](./docs/mysql.md)
 6. [redis](./docs/redis.md)
 7. [mongodb](./docs/mongodb.md)
+8. [python3 in centos](./docs/python3.md)
 
