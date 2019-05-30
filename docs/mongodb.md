@@ -22,9 +22,30 @@ firewall-cmd --reload
 
 
 
+## mongo docker方式安装使用
+
+```bash
+docker pull mongo
+docker images mongo
+
+#启动容器
+mkdir -p /data/db
+cd /data
+docker run  --name mongo1 -p 27017:27017 -v $PWD/db:/data/db -d mongo
 
 
-### mongo 安装
+#docker exec -it xxxxxxxxxx mongo --host 172.17.0.1
+# 登录
+docker exec -it $(docker ps | grep mongo1 | awk 'NR > 0 {print $1}') mongo
+#--host 172.17.0.1
+
+```
+
+
+
+
+
+### mongo 生产方式安装
 
 错误提示：./bin/mongod: error while loading shared libraries: libssl.so.6: cannot open shared object file: No such file or directory
 
