@@ -6,9 +6,9 @@
 rm -rf /data/dockerMongo/
 
 #创建数据rs
-docker run --name mongoCluster1  -v /data/dockerMongo/db1:/data/db:z -p 20001:27017 -d mongo -replSet rs0
-docker run --name mongoCluster2 -v /data/dockerMongo/db2:/data/db:z -p 20002:27017 -d mongo -replSet rs0
-docker run --name mongoCluster3 -v /data/dockerMongo/db3:/data/db:z -p 20003:27017 -d mongo -replSet rs0
+docker run  --name mongoCluster1 --restart=always -v /data/dockerMongo/db1:/data/db:z -p 20001:27017 -d mongo -replSet rs0
+docker run --name mongoCluster2 --restart=always -v /data/dockerMongo/db2:/data/db:z -p 20002:27017 -d mongo -replSet rs0
+docker run --name mongoCluster3 --restart=always -v /data/dockerMongo/db3:/data/db:z -p 20003:27017 -d mongo -replSet rs0
 
 #check
 docker ps | grep mongo
