@@ -25,8 +25,7 @@ docker run -d -p 5000:5000 --restart=always --name registry \
   -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
   registry:2
 
-# 根据实际ip
-echo "xx.xxx.x.x  docker.server" >>/etc/hosts
+
 
 
 
@@ -40,7 +39,11 @@ sudo mkdir -p /etc/docker/certs.d/docker.server:5000
 sudo cp /data/certs/domain.crt /etc/docker/certs.d/docker.server:5000/ca.crt
 sudo service docker restart
 
+# 根据实际ip
+echo "xx.xxx.x.x  docker.server" >>/etc/hosts
+
 docker pull busybox
+
 docker tag busybox docker.server:5000/busybox
 
 docker push docker.server:5000/busybox
