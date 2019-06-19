@@ -16,3 +16,6 @@ step by step install deployments
 7. [mongodb](./docs/mongodb.md)    [集群](./docs/mongodbCluster.md)
 8. [python3 in centos](./docs/python3.md)
 9. [docker](./docs/docker.md) 相关
+10. [nginx](./docs/nginx.md)
+11. [tomcat](./docs/tomcat.md)
+12. [gitlab](./docs/gitlab.md)
