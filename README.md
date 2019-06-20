@@ -19,3 +19,4 @@ step by step install deployments
 10. [nginx](./docs/nginx.md)
 11. [tomcat](./docs/tomcat.md)
 12. [gitlab](./docs/gitlab.md)
+13. [ssh 免密](./docs/sshLogin.md)
