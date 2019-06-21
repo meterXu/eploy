@@ -8,8 +8,9 @@
 # docker 中下载 mysql
 docker pull mysql
 
+mkdir -p /home/mysql/data
 #启动
-docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=xxxxxxxxx -d mysql
+docker run --name mysql --restart=always -p 3306:3306 -v /home/mysql/data:/var/lib/mysql  -e MYSQL_ROOT_PASSWORD=xxxxxxxxx -d mysql
 
 #进入容器
 docker exec -it mysql bash
