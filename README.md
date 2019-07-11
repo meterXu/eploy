@@ -21,3 +21,4 @@ step by step install deployments
 12. [gitlab](./docs/gitlab.md)
 13. [ssh 免密](./docs/sshLogin.md)
 
+14. [hubot + bearychat](./docs/hubot.md)
