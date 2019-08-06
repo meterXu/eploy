@@ -21,6 +21,36 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';
 
 ```
 
+### 数据库备份
+
+```bash
+systemctl enable crond
+systemctl start cornd
+
+mkdir -p /data/scripts
+mkdir -p /data/bak/mysql/
+vim /data/scripts/mysql_dumps.sh
+```
+
+```bash
+#!/bin/bash
+docker_name=mysql
+data_dir="/data/bak/mysql/"
+
+#here change password
+docker exec -it ${docker_name} mysqldump -uroot -pxxxxxxxxx --all-databases > "$data_dir/data_`date +%Y%m%d`.sql"
+
+find $data_dir -mtime +7 -name 'data_[1-9].sql' -exec rm -rf {} \;
+
+crontab -e
+
+0 2 * * * sh /data/scripts/mysql_dumps.sh > /data/scripts/mysql_dumps.log 2>&1
+```
+
+
+
+
+
 ## yum安装
 
 ```bash

@@ -20,5 +20,8 @@ step by step install deployments
 11. [tomcat](./docs/tomcat.md)
 12. [gitlab](./docs/gitlab.md)
 13. [ssh 免密](./docs/sshLogin.md)
-
 14. [hubot + bearychat](./docs/hubot.md)
+15. [jenkins](./docs/jenkins.md)
+16. [ceph](./docs/ceph.md)
+17. [ansible](./docs/ansible.md)
+18. [wekan](./docs/wekan.md) kanboard
