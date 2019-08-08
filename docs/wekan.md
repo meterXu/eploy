@@ -32,6 +32,9 @@ systemctl restart snap.wekan.wekan
 sudo snap set wekan mail-url='smtps://user:pass@mailserver.example.com:453'
 sudo snap set wekan mail-from='xxxx@xxxxx'
 
+# stop snap refresh
+sudo snap set system refresh.metered=hold
+ 
 #nginx proxy
 ```
 
@@ -58,5 +61,16 @@ http {
             proxy_set_header Connection $connection_upgrade;
         }
     }
+```
+
+
+
+
+
+## mongo备份
+
+```bash
+# 外网访问
+snap set wekan mongodb-bind-ip="0.0.0.0"
 ```
 
