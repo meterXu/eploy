@@ -9,7 +9,7 @@ step by step install deployments
 
 1. [tools](./docs/tools.md)
 2. cnpm私服  [sinopia](docs/sinopia.md)
-3. [fastdfs in centos](docs/fastdfs/fastdfs.md)
+3. [fastdfs in centos](./docs/fastdfs/fastdfs.md)  [fastdfs管理](./docs/fastdfs/fastdfs_manger.md)
 4. [matomo on centos7](./docs/matomo.md)
 5. [mysql](./docs/mysql.md)
 6. [redis](./docs/redis.md)
@@ -25,3 +25,4 @@ step by step install deployments
 16. [ceph](./docs/ceph.md)
 17. [ansible](./docs/ansible.md)
 18. [wekan](./docs/wekan.md) kanboard
+19. [rocketchat](./docs/rocketchat.md)
