@@ -26,3 +26,5 @@ step by step install deployments
 17. [ansible](./docs/ansible.md)
 18. [wekan](./docs/wekan.md) kanboard
 19. [rocketchat](./docs/rocketchat.md)
+20. [kafka](./docs/kafka.md)
+21. [pm2](./docs/pm2.md)
