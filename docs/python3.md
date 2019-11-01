@@ -1,3 +1,18 @@
+## 采用conda方式
+[anaconda](https://www.anaconda.com/) 
+```
+sh xxxxx
+#环境变量配置
+
+conda init 
+
+exit
+
+# 重新登陆即ok
+
+```
+
+## centos
 ```bash
 
 #依赖

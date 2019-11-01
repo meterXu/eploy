@@ -30,6 +30,13 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mykafka 
 
 
 
+### k8s 
+
+```bash
+kubectl create -f k8s/kafka/single/zookeeper-svc.yaml
+kubectl create -f k8s/kafka/single/zookeeper-deployment.yaml
+```
+
 
 
 
