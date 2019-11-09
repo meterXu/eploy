@@ -28,3 +28,5 @@ step by step install deployments
 19. [rocketchat](./docs/rocketchat.md)
 20. [kafka](./docs/kafka.md)
 21. [pm2](./docs/pm2.md)
+22. [ss](./docs/ss.md)
+
