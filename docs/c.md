@@ -27,10 +27,28 @@ kubectl get pv
 kubectl get pvc
 ```
 
+[ingress](..)
 
 
-//todos
 
-[charMuesum](https://github.com/helm/chartmuseum#helm-chart) 
+[chartMuesum](https://github.com/helm/chartmuseum#helm-chart)  
+
+```bash
+
+cat > custom.yaml << EOF
+env:
+  open:
+    STORAGE: local
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClass: "rook-ceph-block"
+EOF
+
+helm install --name my-chartmuseum -f custom.yaml stable/chartmuseum
+```
+
+
 
 [monocular](https://github.com/helm/monocular)
