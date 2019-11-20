@@ -29,4 +29,4 @@ step by step install deployments
 20. [kafka](./docs/kafka.md)
 21. [pm2](./docs/pm2.md)
 22. [c env](./docs/c.md)  container env of all
-22. [ss](./docs/ss.md)
+23. [ss](./docs/ss.md)

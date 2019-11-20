@@ -27,13 +27,43 @@ kubectl get pv
 kubectl get pvc
 ```
 
-[ingress](..)
+[kuboard](https://kuboard.cn/install/install-dashboard.html#%E5%AE%89%E8%A3%85) 界面
+
+[ingress](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm)
+
+```bash
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+
+
+helm install stable/nginx-ingress \
+-n nginx-ingress \
+--namespace kube-system  \
+--set controller.hostNetwork=true，rbac.create=true \
+--set controller.replicaCount=1
+
+kubectl get svc -n ingress-nginx
+
+# test
+kubectl apply -f https://raw.githubusercontent.com/apporoad/aok.js/master/k8s/example/aok.yaml
+kubectl apply -f https://raw.githubusercontent.com/apporoad/aok.js/master/k8s/example/ingress-aok.yaml
+
+kubectl get pods | grep aok
+
+# add aok.com into your client's /etc/hosts
+# visit like http://aok.com:32406/
+
+# delete test
+kubectl delete -f https://raw.githubusercontent.com/apporoad/aok.js/master/k8s/example/aok.yaml
+kubectl delete -f https://raw.githubusercontent.com/apporoad/aok.js/master/k8s/example/ingress-aok.yaml
+
+```
 
 
 
 [chartMuesum](https://github.com/helm/chartmuseum#helm-chart)  
 
 ```bash
+kubectl get storageClass
 
 cat > custom.yaml << EOF
 env:
@@ -46,7 +76,34 @@ persistence:
   storageClass: "rook-ceph-block"
 EOF
 
-helm install --name my-chartmuseum -f custom.yaml stable/chartmuseum
+helm install --name my-chartmuseum -f custom.yaml stable/chartmuseum 
+
+#helm install --name my-chartmuseum -f custom.yaml stable/chartmuseum \
+#  --set ingress.enabled=true \
+#  --set ingress.hosts[0].name=chartmuseum.domain.com \
+#  --set ingress.annotations."kubernetes\.io/ingress\.class"=nginx
+
+
+cat > ingress-chartmuseum.yaml << EOF
+apiVersion: extensions/v1beta1      
+kind: Ingress       
+metadata:           
+  name: ingress-chartmuseum   
+  namespace: default     
+  annotations:          
+    kubernetes.io/ingress.class: "nginx"
+spec:     
+  rules:   
+  - host: chartmuseum.xdo.com   
+    http:
+      paths:       
+      - path:       
+        backend:    
+          serviceName: my-chartmuseum-chartmuseum
+          servicePort: 8080
+EOF
+
+kubectl apply -f  ingress-chartmuseum.yaml 
 ```
 
 
