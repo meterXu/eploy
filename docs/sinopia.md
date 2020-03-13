@@ -13,6 +13,11 @@ sinopia
 ## 配置
 
 修改配置文件
+```bash
+find / -name sinopia
+#cd..
+vim config.yaml
+```
 
 ```yaml
 
