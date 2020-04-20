@@ -31,3 +31,4 @@ step by step install deployments
 22. [c env](./docs/c.md)  container env of all
 23. [ss](./docs/ss.md)
 24. [apollo](https://github.com/hyd-raiders/C4.apollo)
+25. [sh](./docs/sh.md)
