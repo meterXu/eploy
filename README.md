@@ -32,3 +32,5 @@ step by step install deployments
 23. [ss](./docs/ss.md)
 24. [apollo](https://github.com/hyd-raiders/C4.apollo)
 25. [sh](./docs/sh.md)
+
+26. [ss @ server](./docs/ss_server.md)
