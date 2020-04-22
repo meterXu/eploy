@@ -104,3 +104,11 @@ export http_proxy=
 
 
 
+### alias
+
+```bash
+alias fan='https_proxy="http://127.0.0.1:8118" && http_proxy="http://127.0.0.1:8118"'
+alias unfan='https_proxy=  && http_proxy= '
+
+```
+
