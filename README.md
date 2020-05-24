@@ -8,7 +8,7 @@ step by step install deployments
 ### list
 
 1. [tools](./docs/tools.md)
-2. cnpm私服  [sinopia](docs/sinopia.md)
+2. cnpm私服  [sinopia](docs/sinopia.md)  node多源切换[nrm](./docs/nrm.md)
 3. [fastdfs in centos](./docs/fastdfs/fastdfs.md)  [fastdfs管理](./docs/fastdfs/fastdfs_manger.md)
 4. [matomo on centos7](./docs/matomo.md)
 5. [mysql](./docs/mysql.md)
