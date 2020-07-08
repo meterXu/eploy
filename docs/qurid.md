@@ -34,3 +34,10 @@ htpasswd -c /etc/squid/passwd yourUsername
 firewall-cmd --zone=public --add-port=9090/tcp --permanent
 
 ```
+
+
+
+
+## client @windows
+reg add "HKCU\Environment" /f /t REG_SZ /v HTTP_PROXY /d "http://user:pwd@ip:9090"
+reg add "HKCU\Environment" /f /t REG_SZ /v HTTPS_PROXY /d "http://user:pwd@ip:9090"
