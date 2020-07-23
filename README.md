@@ -35,3 +35,4 @@ step by step install deployments
 26. [ss @ server](./docs/ss_server.md)
 27. [postgres](./docs/pg.md)
 28. [qurid](./docs/qurid.md)  proxy
+29. [git私服](./docs/git.md)
